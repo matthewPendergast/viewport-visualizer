@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewport Visualizer</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .container {
+            display: flex;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+        .left-div {
+            height: 10vh;
+        }
+        .left-div, .right-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        p {
+            margin: 0;
+            color: white;
+            text-shadow: 2px 2px black;
+        }
+    </style>
+</head>
+<body style="background-color: black;">
+    <div class="container">
+        <div id="left-column" class="column"></div>
+        <div id="right-column" class="column"></div>
+    </div>
+
+    <script>
+        const leftColors = [
+            "LawnGreen", "SaddleBrown", "Peru", "Sienna", "Goldenrod",
+            "Tan", "SlateGray", "Chocolate", "DarkGray", "DimGray"
+        ];
+        const rightColors = [
+            "SteelBlue", "DarkOliveGreen", "Sienna", "SlateGray", "Goldenrod",
+            "Crimson", "DarkCyan", "Peru", "Olive", "MediumPurple",
+            "DarkSlateGray", "RosyBrown", "DarkGoldenrod", "Teal", "FireBrick",
+            "CadetBlue", "Chocolate", "LightSlateGray", "SeaGreen", "IndianRed",
+            "DarkSeaGreen", "DimGray", "MediumAquamarine", "SaddleBrown", "CornflowerBlue",
+            "DarkKhaki", "LightSeaGreen", "Maroon", "DarkOrchid", "BurlyWood",
+            "ForestGreen", "DarkSalmon", "MidnightBlue", "Tomato", "DarkTurquoise",
+            "PeachPuff", "Brown", "Indigo", "Coral", "Silver"
+        ];
+        const leftColumn = document.getElementById("left-column");
+        const rightColumn = document.getElementById("right-column");
+        let count = 0;
+
+        leftColors.forEach(color => {
+            count += 10;
+            let div = document.createElement("div");
+            div.className = "left-div";
+            div.style.backgroundColor = color;
+            let p = document.createElement("p");
+            p.textContent = count + " vh";
+            div.appendChild(p);
+            leftColumn.appendChild(div)
+        });
+
+        rightColors.forEach((color, index) => {
+            let div = document.createElement("div");
+            remSize = 1 + index * 1;
+            div.className = "right-div";
+            div.style.height = remSize + "rem";
+            div.style.backgroundColor = color;
+            let p = document.createElement("p");
+            p.textContent = remSize + " REM";
+            div.appendChild(p);
+            rightColumn.appendChild(div)
+        });
+    </script>
+</body>
+</html>
